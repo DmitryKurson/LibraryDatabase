@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LibraryDatabase.Entities
 {
-    internal class Person
+    public class Person
     {
-        public int surname_name_lastname { get; set; }
+        public string surname_name_lastname { get; set; }
     }
 }

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryDatabase.Entities
 {
-    internal class Book
+    public class Book
     {
-        public int book_ID_in_database { get; set; }
+        [Key] public int book_ID_in_database { get; set; }
         public int name { get; set; }
         public int year_of_writing { get; set; }
         public int publishing_house { get; set; }

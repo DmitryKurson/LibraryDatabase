@@ -5,23 +5,32 @@ using System;
 
 public class LibraryContext : DbContext
 {
-	public LibraryContext()
+    public DbSet<Author> Author => Set<Author>();
+    //public DbSet<Author> Author { get; set; } = null!;
+    public LibraryContext()
 	{
-        Database.EnsureCreated();
+        //Database.EnsureCreated();
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=LibraryDatabase.db");
 
-        IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsetting.json")
-            .Build();
-        optionsBuilder.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
+        //IConfigurationRoot configuration = new ConfigurationBuilder()
+        //    .SetBasePath(Directory.GetCurrentDirectory())
+        //    .AddJsonFile("appsetting.json")
+        //    .Build();
+        //optionsBuilder.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Author>().HasData(new Author
+        {
+            authorID = 1,
+            nationality = "ukrainian",
+            literature_direction = "romantism",
+            surname_name_lastname = "Taras Hrygorovich Shevchenko",
+        });
         //var asd = modelBuilder.Entity<>
         modelBuilder.Entity<Author>()
             .HasMany(b => b.has_been_written_)
@@ -47,9 +56,9 @@ public class LibraryContext : DbContext
             .HasMany(p => p.book_issue_)
             .WithOne(p => p.book_copy_);
 
-        modelBuilder.Entity<BookIssueInHall>()
-            .HasOne(r => r.book_issue_)
-            .WithOne(r => r.book_issue_in_hall_);
+        //modelBuilder.Entity<BookIssueInHall>()
+        //    .HasOne(r => r.book_issue_)
+        //    .WithOne(r => r.book_issue_in_hall_);
 
         modelBuilder.Entity<OnlineIssue>()
             .HasMany(e => e.book_issue_)
@@ -57,7 +66,8 @@ public class LibraryContext : DbContext
 
         modelBuilder.Entity<Reader>()
             .HasOne(t => t.online_issue_)
-            .WithOne(t => t.reader_);
+            .WithOne(t => t.reader_)
+            .HasForeignKey<OnlineIssue>(t => t.readers_ticket_code);
 
         modelBuilder.Entity<Worker>()
             .HasMany(y => y.book_issue_)
@@ -66,6 +76,10 @@ public class LibraryContext : DbContext
         modelBuilder.Entity<WorkInHall>()
             .HasMany(u => u.worker_)
             .WithOne(u => u.work_in_hall_);
+
+        modelBuilder.Entity<BookIssue>()
+            .HasMany(k => k.book_issue_in_hall_)
+            .WithOne(k => k.book_issue_);
 
         modelBuilder.Entity<Readerhall>()
             .HasMany(i => i.book_issue_in_hall_)

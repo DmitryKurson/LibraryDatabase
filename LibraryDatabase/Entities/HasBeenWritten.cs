@@ -4,11 +4,13 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace LibraryDatabase.Entities
 {
-    internal class HasBeenWritten
+    public class HasBeenWritten
     {
+        [Key]
         public int author_code { get; set; }
         public int book_code { get; set; }  
        

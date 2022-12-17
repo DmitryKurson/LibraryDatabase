@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryDatabase.Entities
 {
-    internal class OriginalBook
+    public class OriginalBook
     {
-        public int name { get; set; }
+        [Key] public int name { get; set; }
         public int code { get; set; }
         public int year_of_writing { get; set; }
         public int count_of_pages { get; set; }

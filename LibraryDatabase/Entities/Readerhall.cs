@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace LibraryDatabase.Entities
 {
-    internal class Readerhall
+    public class Readerhall
     {
+        [Key]
         public int hall_code { get; set; }
         public int count_of_tables { get; set; }
         public int count_of_shelves { get; set; }

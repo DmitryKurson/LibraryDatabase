@@ -1,24 +1,16 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using LibraryDatabase.Entities;
 using Microsoft.EntityFrameworkCore;
 
-LibraryContext lb = new LibraryContext();
-using (LibraryContext db = new ryContext())
-{
-    // создаем два объекта User
-    User tom = new User { Name = "Tom", Age = 33 };
-    User alice = new User { Name = "Alice", Age = 26 };
+LibraryContext db = new LibraryContext();
 
-    // добавляем их в бд
-    db.Users.Add(tom);
-    db.Users.Add(alice);
-    db.SaveChanges();
-    Console.WriteLine("Объекты успешно сохранены");
+// создаем два объекта User
+Author lesya_ukrainka = new Author { authorID = 2, surname_name_lastname = "Lesya Kosach Petrivna", nationality = "ukrainian", literature_direction = "realism" };
+Author vasil_symonenko = new Author { authorID = 3, surname_name_lastname = "Vasil Symonenko Andriyovich", nationality = "ukrainian", literature_direction = "sentimentalism" };
 
-    // получаем объекты из бд и выводим на консоль
-    var users = db.Users.ToList();
-    Console.WriteLine("Список объектов:");
-    foreach (User u in users)
-    {
-        Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
-    }
-}
+db.Author.Add(lesya_ukrainka);
+db.Author.Add(vasil_symonenko);
+db.Author.Remove(vasil_symonenko);
+db.SaveChanges();
+
+
