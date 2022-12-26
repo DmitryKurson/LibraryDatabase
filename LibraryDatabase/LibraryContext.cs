@@ -6,6 +6,10 @@ using System;
 public class LibraryContext : DbContext
 {
     public DbSet<Author> Author => Set<Author>();
+    public DbSet<Author> Author2;
+    public DbSet<HasBeenWritten> has_been_written;
+    public DbSet<OriginalBook> books;
+    public DbSet<Reader> reader;
     //public DbSet<Author> Author { get; set; } = null!;
     public LibraryContext()
 	{
@@ -13,7 +17,9 @@ public class LibraryContext : DbContext
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=LibraryDatabase.db");
+        optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlite("Data Source=LibraryDatabase.db");
 
         //IConfigurationRoot configuration = new ConfigurationBuilder()
         //    .SetBasePath(Directory.GetCurrentDirectory())
