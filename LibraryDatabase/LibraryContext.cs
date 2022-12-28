@@ -11,8 +11,9 @@ public class LibraryContext : DbContext
     public DbSet<OriginalBook> books{get;set;}
     public DbSet<Reader> reader1 { get; set; }
     //public DbSet<Author> Author { get; set; } = null!;
-    public LibraryContext()
+    public LibraryContext(object some)
 	{
+        
         //Database.EnsureCreated();
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
