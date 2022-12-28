@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryDatabase.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20221226190441_LNQCreate55")]
+    partial class LNQCreate55
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,6 +36,7 @@ namespace LibraryDatabase.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("surname_name_lastname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("authorID");
@@ -274,6 +278,7 @@ namespace LibraryDatabase.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("surname_name_lastname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("reader_ticket_code");
@@ -330,6 +335,7 @@ namespace LibraryDatabase.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("surname_name_lastname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("work_in_hall_passport_code_and_series")

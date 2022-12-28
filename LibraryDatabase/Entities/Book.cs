@@ -18,8 +18,8 @@ namespace LibraryDatabase.Entities
         public int literary_direction { get; set; }
         public int code { get; set; }
 
-        public OriginalBook? original_book_ { get; set; }
-        public PublishingHouse? publishing_house_ { get; set; }
-        public ICollection<BookCopy>? book_copyes_ { get; set; }      
+        public virtual OriginalBook? original_book_ { get; set; }
+        public virtual PublishingHouse? publishing_house_ { get; set; }
+        public virtual ICollection<BookCopy>? book_copyes_ { get; set; }      
     }
 }

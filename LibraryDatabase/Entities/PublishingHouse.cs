@@ -13,6 +13,6 @@ namespace LibraryDatabase.Entities
         public int count_of_printing_per_year { get; set; }
         public int literature_direction { get; set; }
 
-        public ICollection<Book>? book_ { get; set; }
+        public virtual ICollection<Book>? book_ { get; set; }
     }
 }

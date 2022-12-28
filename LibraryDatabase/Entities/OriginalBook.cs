@@ -15,7 +15,7 @@ namespace LibraryDatabase.Entities
         public int count_of_pages { get; set; }
         public int literature_direction { get; set; }
 
-        public ICollection<HasBeenWritten>? HasBeenWritten { get; set; }
-        public ICollection<Book>? books { get; set; }
+        public virtual ICollection<HasBeenWritten>? HasBeenWritten { get; set; }
+        public virtual ICollection<Book>? books { get; set; }
     }
 }

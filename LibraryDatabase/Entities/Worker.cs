@@ -12,7 +12,7 @@ namespace LibraryDatabase.Entities
         [Key]
         public int passport_code_and_series { get; set; }
         public int data_of_birth { get; set; }
-        public ICollection<BookIssue>? book_issue_ { get; set; }
-        public WorkInHall work_in_hall_ { get; set; }
+        public virtual ICollection<BookIssue>? book_issue_ { get; set; }
+        public virtual WorkInHall work_in_hall_ { get; set; }
     }
 }

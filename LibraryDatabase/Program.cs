@@ -21,12 +21,12 @@ OriginalBook hiba_revut_voliy = new OriginalBook { count_of_pages = 384 };  // p
 OriginalBook poviya = new OriginalBook { count_of_pages = 502 };            // p. myirniy
 OriginalBook holodna_volya = new OriginalBook { count_of_pages = 202 };     // p. myirniy
 Author panas_myrniy = new Author { authorID = 4 };
-Reader some_reader = new Reader { surname_name_lastname = "Ivan Goncharenko" };
+//Reader some_reader = new Reader { surname_name_lastname = "Ivan Goncharenko" };
 
 db.books.AddRange(kobzar, lisova_pisnya,zbirnyk_virshiv_ta_kazok, hiba_revut_voliy, poviya, holodna_volya);
 db.Author.Add(panas_myrniy);
-db.reader.Add(some_reader);
-db.SaveChanges();
+//db.reader1.Add(some_reader);
+//db.SaveChanges();
 
 
 using (LibraryContext context = new LibraryContext())
@@ -71,5 +71,32 @@ using (LibraryContext context = new LibraryContext())
 
     */
 
-    var result = context.Author.Where(author => author.has_been_written_.Where(book => book.original_book.count_of_pages > 200).Count);
+    ///Усіх авторів, які написали більше 3ьох книжок, що містять 200 сторінок
+    //var result =  from a in context.Author
+    //                join hbw in context.has_been_written on a.has_been_written_ equals hbw.author
+    //                join b in context.books on hbw.book_code equals b.code
+    //                where b.count_of_pages > 200
+    //                group a by a.authorID into g
+    //                where g.Count() > 3
+    //                select g.Key;
+
+    //var result = context.Author
+    //    .Join(context.has_been_written, a => a.has_been_written_, hbw => hbw.author, (a, hbw) => new { a, hbw })
+    //    .Join(context.books, ahbw => ahbw.hbw.book_code, b => b.code, (ahbw, b) => new { ahbw, b })
+    //    .Where(x => x.b.count_of_pages > 200)
+    //    .GroupBy(x => x.ahbw.a.authorID)
+    //    .Where(x => x.Count() > 3)
+    //    .Select(x => x.Key);
+
+    //db.has_been_written.Add(new HasBeenWritten { author_code = 1, book_code = 1 });
+    //db.has_been_written.Add(new HasBeenWritten { author_code = 1, book_code = 1 });
+    //db.has_been_written.Add(new HasBeenWritten { author_code = 1, book_code = 1 });
+    //db.has_been_written.Add(new HasBeenWritten { author_code = 1, book_code = 1 });
+
+    var result = context.Author
+        .Where(x => x.has_been_written_
+        .Where(y => y.original_book.count_of_pages > 200).Count() > 3)
+        .ToList();
+    //.Select(x => x.authorID);
+    ;
 }

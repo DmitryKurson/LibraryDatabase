@@ -5,6 +5,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LibraryDatabase.Entities
 {
@@ -16,7 +17,7 @@ namespace LibraryDatabase.Entities
        
         
         //Navigation Property
-        public Author author { get; set;}
-        public OriginalBook original_book { get; set;}
+        public virtual Author author { get; set;}
+        public virtual OriginalBook original_book { get; set;}
     }
 }

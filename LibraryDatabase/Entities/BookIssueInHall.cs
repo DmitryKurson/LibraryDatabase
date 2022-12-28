@@ -12,7 +12,7 @@ namespace LibraryDatabase.Entities
         [Key]
         public int hall_code { get; set; }
         public int issue_code { get; set; }
-        public BookIssue book_issue_ { get; set; }
-        public Readerhall reader_hall_ { get; set; }
+        public virtual BookIssue book_issue_ { get; set; }
+        public virtual Readerhall reader_hall_ { get; set; }
     }
 }

@@ -9,8 +9,8 @@ namespace LibraryDatabase.Entities
     public class Author : Person
     {
         public int authorID { get; set; }
-        public string nationality { get; set; }
-        public string literature_direction { get; set; }       
-        public ICollection <HasBeenWritten>? has_been_written_ { get; set; }
+        public string? nationality { get; set; }
+        public string? literature_direction { get; set; }       
+        public virtual ICollection <HasBeenWritten>? has_been_written_ { get; set; }
     }
 }

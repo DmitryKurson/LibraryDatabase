@@ -12,7 +12,7 @@ namespace LibraryDatabase.Entities
         [Key] public int inventory_code { get; set; }
         public int database_book_code { get; set; }
 
-        public Book book_ { get; set; }
-        public ICollection<BookIssue>? book_issue_ { get; set; }
+        public virtual Book book_ { get; set; }
+        public virtual ICollection<BookIssue>? book_issue_ { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace LibraryDatabase.Entities
         public int hall_code { get; set; }
         public int count_of_tables { get; set; }
         public int count_of_shelves { get; set; }
-        public WorkInHall work_in_hall_ { get; set; }
-        public ICollection<BookIssueInHall>? book_issue_in_hall_ { get; set; }
+        public virtual WorkInHall work_in_hall_ { get; set; }
+        public virtual ICollection<BookIssueInHall>? book_issue_in_hall_ { get; set; }
     }
 }

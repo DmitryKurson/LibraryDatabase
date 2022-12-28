@@ -13,6 +13,6 @@ namespace LibraryDatabase.Entities
         public int data_of_birth { get; set; }
         public int place_of_living { get; set; }
         public int phone { get; set; }
-        public OnlineIssue online_issue_ { get; set; }
+        public virtual OnlineIssue online_issue_ { get; set; }
     }
 }

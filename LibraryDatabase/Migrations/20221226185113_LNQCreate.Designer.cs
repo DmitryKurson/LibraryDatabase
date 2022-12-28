@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryDatabase.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20221226185113_LNQCreate")]
+    partial class LNQCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,12 +30,15 @@ namespace LibraryDatabase.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("literature_direction")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("nationality")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("surname_name_lastname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("authorID");
@@ -239,7 +245,7 @@ namespace LibraryDatabase.Migrations
 
                     b.HasKey("name");
 
-                    b.ToTable("books");
+                    b.ToTable("OriginalBook");
                 });
 
             modelBuilder.Entity("LibraryDatabase.Entities.PublishingHouse", b =>
@@ -274,11 +280,12 @@ namespace LibraryDatabase.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("surname_name_lastname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("reader_ticket_code");
 
-                    b.ToTable("reader1");
+                    b.ToTable("Reader");
                 });
 
             modelBuilder.Entity("LibraryDatabase.Entities.Readerhall", b =>
@@ -330,6 +337,7 @@ namespace LibraryDatabase.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("surname_name_lastname")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("work_in_hall_passport_code_and_series")

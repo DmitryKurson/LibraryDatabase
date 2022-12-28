@@ -8,8 +8,8 @@ public class LibraryContext : DbContext
     public DbSet<Author> Author => Set<Author>();
     public DbSet<Author> Author2;
     public DbSet<HasBeenWritten> has_been_written;
-    public DbSet<OriginalBook> books;
-    public DbSet<Reader> reader;
+    public DbSet<OriginalBook> books{get;set;}
+    public DbSet<Reader> reader1 { get; set; }
     //public DbSet<Author> Author { get; set; } = null!;
     public LibraryContext()
 	{
